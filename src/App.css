@@ -1,0 +1,153 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  background: radial-gradient(#1d1d57, #191a1f);
+  height: 100vh;
+  font-family: poppins;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home .title {
+  font-size: 70px;
+  text-shadow: 0 10px 10px #000;
+  font-weight: semi-bold;
+}
+
+.btnPlay {
+  display: block;
+  margin: 20px auto;
+  background-color: #2e398b;
+  color: #eee;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: large;
+  letter-spacing: 3px;
+  box-shadow: 0 10px 10px #000;
+  cursor: pointer;
+}
+
+@keyframes showHome {
+  to {
+    opacity: 1;
+  }
+}
+
+.home {
+  opacity: 0;
+  animation: showHome 2s .3s ease-in-out 1 forwards;
+}
+
+.playing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  gap: 20px;
+  opacity: 0;
+  animation: showHome 1s ease-in-out 1 forwards;
+}
+
+.playing .timer {
+  font-size: 25px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.655);
+}
+
+.playing .list {
+  width: 100%;
+  padding: 20px;
+  list-style: none;
+  text-align: left;
+  background-image: linear-gradient(45deg, #4d4ea9, #67c0ab);
+  border-radius: 20px;
+  box-shadow: 0 1px 0 #fff;
+}
+
+.playing li {
+  display: inline-block;
+  font-size: x-large;
+  padding: 10px;
+  text-shadow: 0 2px 2px #0009;
+  position: relative;
+}
+
+.playing input {
+  width: 100%;
+  padding: 15px;
+  outline: none;
+  text-align: center;
+  font-size: large;
+  background-color: #0005;
+  border: none;
+  color: #6dd1b1;
+  border-radius: 20px;
+  font-family: poppins;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.45);
+}
+
+.playing li.correct {
+  color: rgb(86, 237, 134);
+}
+
+.playing li.incorrect {
+  color: rgb(240, 87, 87);
+}
+
+.playing li.correct::after,
+.playing li.incorrect::after {
+  position: absolute;
+  inset: 0 0 0 0;
+  content: '+1';
+  text-align: center;
+  animation: showPoint .5s linear 1 forwards;
+}
+
+.playing li.incorrect::after {
+  content: '-1';
+}
+
+@keyframes showPoint {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+.EndGame {
+  opacity: 0;
+  animation: showHome 1s .3s ease-in-out 1 forwards;
+}
+
+.EndGame .result {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  text-align: center;
+  font-size: 20px;
+  text-shadow: 0 10px 10px #000;
+}
+
+.EndGame .number {
+  font-size: 50px;
+}
